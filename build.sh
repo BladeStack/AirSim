@@ -49,13 +49,10 @@ if $debug; then
 else
     build_dir=build_release
 fi 
-if [ "$(uname)" == "Darwin" ]; then
-    export CC=/usr/local/opt/llvm@8/bin/clang
-    export CXX=/usr/local/opt/llvm@8/bin/clang++
-else
-    export CC="clang-8"
-    export CXX="clang++-8"
-fi
+
+# Use gcc and g++ on arch to build the library
+export CC="gcc"
+export CXX="g++"
 
 #install EIGEN library
 if [[ !(-d "./AirLib/deps/eigen3/Eigen") ]]; then
